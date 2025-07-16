@@ -127,7 +127,8 @@ jacoco-report-aggregate/target/site/jacoco-aggregate/index.html
 
 A continuación, se muestra un ejemplo del reporte de cobertura generado por JaCoCo:
 
-! (http://googleusercontent.com/file_content/1)
+<img width="1084" height="257" alt="image" src="https://github.com/user-attachments/assets/6909a0d7-e551-444a-afb3-a49e2cd17a51" />
+
 
 Exclusiones de Cobertura:
 Algunas clases son excluidas del reporte de cobertura para enfocarse en la lógica de negocio relevante. Estas incluyen:
