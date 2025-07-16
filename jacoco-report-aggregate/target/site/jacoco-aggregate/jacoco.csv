@@ -1,7 +1,0 @@
-GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
-com.mic:jacoco-report-aggregate/product,com.mic.product.domain,ProductMapperImpl,2,103,1,21,1,27,1,13,0,3
-com.mic:jacoco-report-aggregate/product,com.mic.product.commons.utils,Validations,0,18,0,4,0,3,0,3,0,1
-com.mic:jacoco-report-aggregate/product,com.mic.product.application,ProductServiceImpl,8,258,0,10,2,60,0,15,0,10
-com.mic:jacoco-report-aggregate/product,com.mic.product.infraestructure,ProductRepositoryAdapter,0,264,0,0,0,106,0,31,0,31
-com.mic:jacoco-report-aggregate/product,com.mic.product.rest,ProductRestMapperImpl,258,3,60,0,81,1,39,1,6,1
-com.mic:jacoco-report-aggregate/product,com.mic.product.rest,ProductController,0,121,0,0,0,24,0,7,0,7

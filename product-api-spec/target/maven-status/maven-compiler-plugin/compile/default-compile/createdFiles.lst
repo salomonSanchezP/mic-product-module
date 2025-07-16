@@ -1,9 +1,0 @@
-org\openapitools\configuration\EnumConverterConfiguration$1.class
-com\mic\product\infrastructure\domain\dto\ProductRequestDTO.class
-com\mic\product\infrastructure\rest\service\ProductApi.class
-com\mic\product\infrastructure\domain\dto\ProductTypeDTO.class
-com\mic\product\infrastructure\domain\dto\ErrorResponseDTO.class
-com\mic\product\infrastructure\domain\dto\ProductDTO.class
-com\mic\product\infrastructure\rest\service\ApiUtil.class
-com\mic\product\infrastructure\domain\dto\ProductUpdateRequestDTO.class
-org\openapitools\configuration\EnumConverterConfiguration.class

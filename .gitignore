@@ -1,0 +1,34 @@
+# Archivos de compilación
+*.class
+
+# Carpetas de salida
+/out/
+/target/
+/build/
+
+# Archivos de logs
+*.log
+
+# Archivos de configuración del IDE
+*.iml
+.idea/
+*.ipr
+*.iws
+*.bak
+
+# Archivos generados por Eclipse
+*.classpath
+*.project
+*.settings/
+
+# Archivos generados por NetBeans
+/nbproject/private/
+/build/
+/dist/
+
+# Archivos generados por VSCode
+.vscode/
+
+# Sistema operativo
+.DS_Store
+Thumbs.db
