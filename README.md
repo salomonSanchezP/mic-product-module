@@ -2,17 +2,17 @@ mic-product-module: Microservicio de Gestión de Productos
 Este repositorio contiene el microservicio mic-product-module, diseñado para gestionar la información de productos. El proyecto sigue una arquitectura modular, utilizando Spring Boot para la implementación del API REST, OpenAPI para la especificación y generación de la API, y JaCoCo para la generación de reportes de cobertura de código de pruebas unitarias.
 
 🌟 Características
-API RESTful Completa: Operaciones CRUD (Crear, Leer, Actualizar, Eliminar) para productos.
+- API RESTful Completa: Operaciones CRUD (Crear, Leer, Actualizar, Eliminar) para productos.
 
-Especificación OpenAPI: Definición clara y concisa de la API utilizando OpenAPI 3.0, lo que permite la generación automática de código.
+- Especificación OpenAPI: Definición clara y concisa de la API utilizando OpenAPI 3.0, lo que permite la generación automática de código.
 
-Generación de Código: Utiliza openapi-generator-maven-plugin para generar la especificación de la API y los DTOs.
+- Generación de Código: Utiliza openapi-generator-maven-plugin para generar la especificación de la API y los DTOs.
 
-Cobertura de Código: Reportes detallados de cobertura de pruebas unitarias generados con JaCoCo.
+- Cobertura de Código: Reportes detallados de cobertura de pruebas unitarias generados con JaCoCo.
 
-Persistencia de Datos: Integración con MongoDB para el almacenamiento de la información de productos.
+- Persistencia de Datos: Integración con MongoDB para el almacenamiento de la información de productos.
 
-Modularidad: Estructura de proyecto multi-módulo para una mejor organización y mantenimiento.
+- Modularidad: Estructura de proyecto multi-módulo para una mejor organización y mantenimiento.
 
 🏗️ Estructura y Arquitectura del Proyecto (Arquitectura Hexagonal)
 El proyecto está organizado en los siguientes módulos Maven y sigue los principios de la Arquitectura Hexagonal (también conocida como Arquitectura de Puertos y Adaptadores). Esta arquitectura busca aislar la lógica de negocio central de las preocupaciones técnicas externas (como la base de datos, la interfaz de usuario, o servicios externos), haciendo el sistema más flexible, testable y mantenible.
@@ -23,19 +23,19 @@ El proyecto está organizado en los siguientes módulos Maven y sigue los princi
 Conceptos Clave en la Arquitectura Hexagonal:
 Núcleo del Negocio (Domain): Contiene la lógica de negocio principal y las entidades de dominio (DO). Es completamente independiente de cualquier tecnología externa. En este proyecto, se encuentra en com.mic.product.domain.
 
-DO (Domain Object): Representan los objetos de negocio puros, sin acoplamiento a la infraestructura. Son la verdad del negocio y no deben contener anotaciones de frameworks específicos de persistencia o web. Por ejemplo, ProductDO en com.mic.product.domain.model.
+- DO (Domain Object): Representan los objetos de negocio puros, sin acoplamiento a la infraestructura. Son la verdad del negocio y no deben contener anotaciones de frameworks específicos de persistencia o web. Por ejemplo, ProductDO en com.mic.product.domain.model.
 
-Puertos (Ports): Son interfaces que definen cómo el núcleo del negocio interactúa con el mundo exterior. Hay dos tipos principales:
+- Puertos (Ports): Son interfaces que definen cómo el núcleo del negocio interactúa con el mundo exterior. Hay dos tipos principales:
 
-Puertos de Aplicación (Driven Ports): Interfaces que el núcleo de negocio expone para ser "manejado" por el exterior (ej. ProductService en com.mic.product.application).
+- Puertos de Aplicación (Driven Ports): Interfaces que el núcleo de negocio expone para ser "manejado" por el exterior (ej. ProductService en com.mic.product.application).
 
-Puertos de Infraestructura (Driving Ports): Interfaces que el núcleo de negocio necesita para "manejar" la infraestructura (ej. ProductRepository en com.mic.product.application).
+- Puertos de Infraestructura (Driving Ports): Interfaces que el núcleo de negocio necesita para "manejar" la infraestructura (ej. ProductRepository en com.mic.product.application).
 
-Adaptadores (Adapters): Implementan los puertos y conectan el núcleo del negocio con tecnologías específicas.
+- Adaptadores (Adapters): Implementan los puertos y conectan el núcleo del negocio con tecnologías específicas.
 
-Adaptadores de Entrada (Driving Adapters): Implementan los puertos de aplicación y exponen la funcionalidad del negocio a clientes externos (ej. ProductController en com.mic.product.infrastructure.rest). Aquí es donde los DTOs son cruciales.
+- Adaptadores de Entrada (Driving Adapters): Implementan los puertos de aplicación y exponen la funcionalidad del negocio a clientes externos (ej. ProductController en com.mic.product.infrastructure.rest). Aquí es donde los DTOs son cruciales.
 
-Adaptadores de Salida (Driven Adapters): Implementan los puertos de infraestructura y permiten que el negocio interactúe con sistemas externos como bases de datos (ej. ProductRepositoryAdapter en com.mic.product.infrastructure.persistence).
+- Adaptadores de Salida (Driven Adapters): Implementan los puertos de infraestructura y permiten que el negocio interactúe con sistemas externos como bases de datos (ej. ProductRepositoryAdapter en com.mic.product.infrastructure.persistence).
 
 DTOs (Data Transfer Objects)
 Los DTOs son objetos simples que se utilizan para transferir datos entre diferentes capas de la aplicación o entre la aplicación y el cliente externo. En este proyecto:
@@ -49,41 +49,41 @@ Se utilizan en la capa REST (ProductController) para recibir y enviar datos a tr
 Los mappers (ej. ProductRestMapper y ProductMapper) se encargan de transformar los DTOs a DOs (objetos de dominio) y viceversa, asegurando que la lógica de negocio opere solo con los objetos de dominio puros. Esto desacopla la API de la lógica de negocio, permitiendo cambios en la estructura de la API sin afectar el dominio.
 
 🛠️ Tecnologías Utilizadas
-Java: Versión 21
+- Java: Versión 21
 
-Spring Boot: Framework para el desarrollo de aplicaciones basadas en Spring.
+- Spring Boot: Framework para el desarrollo de aplicaciones basadas en Spring.
 
-Maven: Herramienta de gestión de proyectos y construcción.
+- Maven: Herramienta de gestión de proyectos y construcción.
 
-MongoDB: Base de datos NoSQL para la persistencia de datos.
+- MongoDB: Base de datos NoSQL para la persistencia de datos.
 
-OpenAPI Generator: Para la generación de código a partir de la especificación OpenAPI.
+- OpenAPI Generator: Para la generación de código a partir de la especificación OpenAPI.
 
-Springdoc OpenAPI: Para la documentación interactiva de la API.
+- Springdoc OpenAPI: Para la documentación interactiva de la API.
 
-MapStruct: Para la generación automática de mappers entre DTOs y entidades de dominio.
+- MapStruct: Para la generación automática de mappers entre DTOs y entidades de dominio.
 
-JaCoCo: Para la generación de reportes de cobertura de código.
+- JaCoCo: Para la generación de reportes de cobertura de código.
 
-Lombok: Para reducir el código repetitivo (boilerplate code).
+- Lombok: Para reducir el código repetitivo (boilerplate code).
 
-Docker: Para la gestión del entorno de base de datos.
+- Docker: Para la gestión del entorno de base de datos.
 
 🚀 API Documentation
 La API de productos está definida utilizando OpenAPI 3.0. Los archivos de especificación se encuentran en product-api-spec/src/main/resources/openapi/.
 
 Endpoints Principales
-GET /product/v1/data/: Obtener todos los productos.
+- GET /product/v1/data/: Obtener todos los productos.
 
-POST /product/v1/data/: Crear un nuevo producto.
+- POST /product/v1/data/: Crear un nuevo producto.
 
-GET /product/v1/data/{id}: Obtener un producto por su SKU.
+- GET /product/v1/data/{id}: Obtener un producto por su SKU.
 
-PUT /product/v1/data/{id}: Actualizar un producto existente por su SKU.
+- PUT /product/v1/data/{id}: Actualizar un producto existente por su SKU.
 
-PATCH /product/v1/data/{id}: Actualizar parcialmente un producto por su SKU.
+- PATCH /product/v1/data/{id}: Actualizar parcialmente un producto por su SKU.
 
-DELETE /product/v1/data/{id}: Eliminar un producto por su SKU.
+- DELETE /product/v1/data/{id}: Eliminar un producto por su SKU.
 
 <img width="1479" height="391" alt="image" src="https://github.com/user-attachments/assets/6c35b5fc-71bf-4691-ac86-cf153640d4ea" />
 
@@ -109,27 +109,27 @@ A continuación, se muestra un ejemplo del reporte de cobertura generado por JaC
 Exclusiones de Cobertura:
 Algunas clases son excluidas del reporte de cobertura para enfocarse en la lógica de negocio relevante. Estas incluyen:
 
-Clases de aplicación (*Application.class)
+- Clases de aplicación (*Application.class)
 
-Clases de configuración (*Configuration.class)
+- Clases de configuración (*Configuration.class)
 
-Clases de excepción (*Exception.class, *ExceptionHandler.class)
+- Clases de excepción (*Exception.class, *ExceptionHandler.class)
 
-Clases de enumeración (*Enum.class, Enum*.class)
+- Clases de enumeración (*Enum.class, Enum*.class)
 
-Clases de entidad (*Entity.class, *DO.class)
+- Clases de entidad (*Entity.class, *DO.class)
 
-Clases de repositorio (*Repository.class)
+- Clases de repositorio (*Repository.class)
 
-Clases de utilidad (*Util.class)
+- Clases de utilidad (*Util.class)
 
-Clases de API generadas (*Api.class)
+- Clases de API generadas (*Api.class)
 
-Clases de constantes (*Constant.class)
+- Clases de constantes (*Constant.class)
 
-Clases DTO (*DTO.class)
+- Clases DTO (*DTO.class)
 
-Clases de verificación de inicio (*StartupCheck.class)
+- Clases de verificación de inicio (*StartupCheck.class)
 
 ⚙️ Cómo Empezar
 Sigue estos pasos para levantar y ejecutar el microservicio en tu entorno local.
