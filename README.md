@@ -17,35 +17,8 @@ Modularidad: Estructura de proyecto multi-módulo para una mejor organización y
 🏗️ Estructura y Arquitectura del Proyecto (Arquitectura Hexagonal)
 El proyecto está organizado en los siguientes módulos Maven y sigue los principios de la Arquitectura Hexagonal (también conocida como Arquitectura de Puertos y Adaptadores). Esta arquitectura busca aislar la lógica de negocio central de las preocupaciones técnicas externas (como la base de datos, la interfaz de usuario, o servicios externos), haciendo el sistema más flexible, testable y mantenible.
 
-mic-product-module/
-├── .idea/                      # Archivos de configuración de IDE (IntelliJ IDEA)
-├── jacoco-report-aggregate/    # Módulo para la agregación de reportes de cobertura JaCoCo
-│   └── pom.xml
-├── product/                    # Módulo principal con la implementación del microservicio
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/
-│   │   │   │   └── com/mic/product/
-│   │   │   │       ├── application/  # Lógica de negocio y servicios (Puerto de Aplicación)
-│   │   │   │       ├── commons/      # Utilidades y manejo de excepciones
-│   │   │   │       ├── domain/       # Modelos de dominio (Entidades de Dominio - DO) y mappers (Núcleo del Negocio)
-│   │   │   │       └── infrastructure/ # Adaptadores de infraestructura (REST, persistencia - Adaptadores)
-│   │   │   └── resources/
-│   │   └── test/
-│   └── pom.xml
-├── product-api-spec/           # Módulo para la definición y generación de la especificación OpenAPI (Puerto de la API)
-│   ├── src/
-│   │   ├── main/
-│   │   │   └── resources/
-│   │   │       └── openapi/
-│   │   │           ├── common.yml
-│   │   │           ├── openapi-rest.yml
-│   │   │           └── product/
-│   │   │               ├── product-api.yml
-│   │   │               └── product-components.yml
-│   │   └── test/
-│   └── pom.xml
-└── pom.xml                     # POM padre para el proyecto multi-módulo
+<img width="1022" height="610" alt="image" src="https://github.com/user-attachments/assets/541dd5e2-6ec1-48df-bddd-57f952abf18c" />
+
 
 Conceptos Clave en la Arquitectura Hexagonal:
 Núcleo del Negocio (Domain): Contiene la lógica de negocio principal y las entidades de dominio (DO). Es completamente independiente de cualquier tecnología externa. En este proyecto, se encuentra en com.mic.product.domain.
