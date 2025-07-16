@@ -162,34 +162,6 @@ Crea un archivo docker-compose.yml en la raíz del proyecto (o en un directorio 
 
 <img width="504" height="633" alt="image" src="https://github.com/user-attachments/assets/f4e05c61-b82e-40b5-8ef9-0a3b63881873" />
 
-  mongo:
-    image: mongo:latest
-    container_name: mongodb
-    restart: always
-    ports:
-      - "27017:27017"
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: pass
-    volumes:
-      - mongo_data:/data/db
-
-  mongo-express:
-    image: mongo-express:latest
-    container_name: mongo-express
-    restart: always
-    depends_on:
-      - mongo
-    ports:
-      - "8081:8081"
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: root
-      ME_CONFIG_MONGODB_ADMINPASSWORD: pass
-      ME_CONFIG_MONGODB_SERVER: mongodb
-
-volumes:
-  mongo_data:
-    driver: local
 
     
 Asegúrate de que Docker esté corriendo en tu sistema.
