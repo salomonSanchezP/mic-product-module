@@ -1,0 +1,18 @@
+spring:
+  application:
+  name: MIC-PRODUCT
+  Profiles:
+    active: dev
+
+  data:
+    mongodb:
+      uri: mongodb://root:pass@127.0.0.1:27017/products?authSource=admin&authMechanism=SCRAM-SHA-256
+app:
+  version: @project.version@
+
+server:
+  port: ${SERVER_PORT:9090}
+
+logging:
+  level:
+    root: INFO

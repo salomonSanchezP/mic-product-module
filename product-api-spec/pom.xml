@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.mic</groupId>
+    <artifactId>mic-product-module</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>..</relativePath>
+  </parent>
+
+  <artifactId>product-api-spec</artifactId>
+  <packaging>jar</packaging>
+
+  <name>${project.groupId}:${project.artifactId}</name>
+  <description />
+
+  <dependencies>
+    <!-- OpenApi generator dependencies -->
+    <dependency>
+      <groupId>org.springdoc</groupId>
+      <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
+      <version>${springdoc-openapi.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.openapitools</groupId>
+      <artifactId>jackson-databind-nullable</artifactId>
+      <version>${jackson-nullable.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.tomcat.embed</groupId>
+      <artifactId>tomcat-embed-core</artifactId>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+
+      <!-- OpenAPI Generator Plugin -->
+      <plugin>
+        <groupId>org.openapitools</groupId>
+        <artifactId>openapi-generator-maven-plugin</artifactId>
+        <version>${openapi-generator.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>generate</goal>
+            </goals>
+            <configuration>
+              <inputSpec>${project.basedir}/src/main/resources/openapi-rest.yml</inputSpec>
+              <output>${project.build.directory}/generated-sources/openapi</output>
+              <generatorName>spring</generatorName>
+              <generateSupportingFiles>true</generateSupportingFiles>
+              <packageName>${project.groupId}</packageName>
+              <apiPackage>${project.groupId}.product.infrastructure.rest.service</apiPackage>
+              <modelPackage>${project.groupId}.product.infrastructure.domain.dto</modelPackage>
+              <modelNameSuffix>DTO</modelNameSuffix> <!-- ✅ Aplica el sufijo DTO -->
+              <skipValidateSpec>false</skipValidateSpec>
+              <generateApiTests>false</generateApiTests>
+              <library>spring-boot</library>
+              <configOptions>
+                <reactive>false</reactive>
+                <delegatePattern>true</delegatePattern>
+                <interfaceOnly>true</interfaceOnly>
+                <generateValidators>true</generateValidators>
+                <useBeanValidation>true</useBeanValidation> ✅ Required camps
+                <useResponseEntity>true</useResponseEntity> <!-- ✅ Delete ResponseEntity<> false> -->
+                <openApiNullable>true</openApiNullable>
+                <useSpringBoot3>true</useSpringBoot3>
+                <UseTags>true</UseTags> <!-- ✅ Use tags in the API -->
+                <!--								<additionalModelTypeAnnotations>@lombok.Builder</additionalModelTypeAnnotations>-->
+              </configOptions>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+    </plugins>
+  </build>
+
+
+</project>

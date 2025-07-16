@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../jacoco-resources/report.gif" type="image/gif"/><title>ProductController.java</title><link rel="stylesheet" href="../../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../../index.html" class="el_report">com.mic:jacoco-report-aggregate</a> &gt; <a href="../index.html" class="el_bundle">product</a> &gt; <a href="index.source.html" class="el_package">com.mic.product.rest</a> &gt; <span class="el_source">ProductController.java</span></div><h1>ProductController.java</h1><pre class="source lang-java linenums">package com.mic.product.rest;
+
+
+
+import com.mic.product.application.ProductService;
+import com.mic.product.domain.model.ProductDO;
+import com.mic.product.infrastructure.domain.dto.ProductDTO;
+import com.mic.product.infrastructure.domain.dto.ProductRequestDTO;
+import com.mic.product.infrastructure.domain.dto.ProductUpdateRequestDTO;
+import com.mic.product.infrastructure.rest.service.ProductApi;
+import com.mic.product.commons.utils.Validations;
+import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+
+
+<span class="fc" id="L22">@Slf4j</span>
+@RestController
+@AllArgsConstructor
+public class ProductController implements ProductApi {
+
+    private ProductService productService;
+
+    private ProductRestMapper productRestMapper;
+
+    private Validations validations;
+
+    @Override
+    public ResponseEntity&lt;ProductDTO&gt; createProduct(ProductRequestDTO productRequestDTO) {
+        ProductDTO productDTO;
+<span class="fc" id="L36">        ProductDO productDO = productRestMapper.mapToProductDO(productRequestDTO);</span>
+<span class="fc" id="L37">        this.validations.validateProduct(productDO);</span>
+<span class="fc" id="L38">        ProductDO newProduct = productService.createProduct(productDO);</span>
+<span class="fc" id="L39">        productDTO = productRestMapper.mapToProductDTO(newProduct);</span>
+<span class="fc" id="L40">        return new ResponseEntity&lt;&gt;(productDTO, HttpStatus.CREATED);</span>
+    }
+
+    @Override
+    public ResponseEntity&lt;Void&gt; deleteProduct(String id) {
+<span class="fc" id="L45">        productService.deleteProduct(id);</span>
+<span class="fc" id="L46">        return new ResponseEntity&lt;&gt;(HttpStatus.NO_CONTENT);</span>
+    }
+
+    @Override
+    public ResponseEntity&lt;List&lt;ProductDTO&gt;&gt; findProducts() {
+<span class="fc" id="L51">        List&lt;ProductDO&gt; productDOs = productService.getAllProducts();</span>
+<span class="fc" id="L52">        List&lt;ProductDTO&gt; productDTOs = productRestMapper.mapToProductDTO(productDOs);</span>
+<span class="fc" id="L53">        return new ResponseEntity&lt;&gt;(productDTOs, HttpStatus.OK);</span>
+    }
+
+    @Override
+    public ResponseEntity&lt;ProductDTO&gt; findProduct(String id) {
+<span class="fc" id="L58">        ProductDO productDO = productService.getProductBySku(id);</span>
+<span class="fc" id="L59">        ProductDTO productDTO = productRestMapper.mapToProductDTO(productDO);</span>
+<span class="fc" id="L60">        return new ResponseEntity&lt;&gt;(productDTO, HttpStatus.OK);</span>
+    }
+
+    @Override
+    public ResponseEntity&lt;ProductDTO&gt; patchProduct(String id, ProductUpdateRequestDTO productRequestDTO) {
+        ProductDTO productDTO;
+<span class="fc" id="L66">        ProductDO productDO = productRestMapper.mapToProductDO(productRequestDTO);</span>
+<span class="fc" id="L67">        this.validations.validateProduct(productDO);</span>
+<span class="fc" id="L68">        ProductDO newProduct = productService.patchProduct(id, productDO);</span>
+<span class="fc" id="L69">        productDTO = productRestMapper.mapToProductDTO(newProduct);</span>
+<span class="fc" id="L70">        return new ResponseEntity&lt;&gt;(productDTO, HttpStatus.OK);</span>
+    }
+
+    @Override
+    public ResponseEntity&lt;ProductDTO&gt; updateProduct(String id, ProductUpdateRequestDTO productRequestDTO) {
+        ProductDTO productDTO;
+<span class="fc" id="L76">        ProductDO productDO = productRestMapper.mapToProductDO(productRequestDTO);</span>
+<span class="fc" id="L77">        this.validations.validateProduct(productDO);</span>
+<span class="fc" id="L78">        ProductDO newProduct = productService.updateProduct(id, productDO);</span>
+<span class="fc" id="L79">        productDTO = productRestMapper.mapToProductDTO(newProduct);</span>
+<span class="fc" id="L80">        return new ResponseEntity&lt;&gt;(productDTO, HttpStatus.OK);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.12.202403310830</span></div></body></html>

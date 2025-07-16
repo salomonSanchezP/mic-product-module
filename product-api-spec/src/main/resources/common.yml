@@ -1,0 +1,22 @@
+components:
+  schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        timestamp:
+          type: string
+          format: date-time
+          description: Timestamp of the error occurrence
+          example: "2025-06-15T12:34:56Z"
+        error:
+          type: string
+          description: Error message
+          example: "PRODUCT-ERROR"
+        message:
+          type: string
+          description: Detailed error message
+          example: "Generic error message"
+      required:
+        - status
+        - error
+        - message

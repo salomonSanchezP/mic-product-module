@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.mic</groupId>
+    <artifactId>mic-product-module</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <relativePath>..</relativePath>
+  </parent>
+
+  <artifactId>jacoco-report-aggregate</artifactId>
+  <packaging>pom</packaging>
+
+  <name>${project.groupId}:${project.artifactId}</name>
+  <description />
+
+  <dependencies>
+    <dependency>
+      <groupId>com.mic</groupId>
+      <artifactId>product</artifactId>
+      <version>0.0.1-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.jacoco</groupId>
+        <artifactId>jacoco-maven-plugin</artifactId>
+        <version>${jacoco.version}</version>
+        <executions>
+          <execution>
+            <id>report-aggregate</id>
+            <goals>
+              <goal>report-aggregate</goal>
+            </goals>
+            <phase>verify</phase>
+          </execution>
+        </executions>
+        <configuration>
+          <excludes>
+            <exclude>**/*Application.class</exclude>
+            <exclude>**/*Configuration.class</exclude>
+            <exclude>**/*Exception.class</exclude>
+            <exclude>**/*ExceptionHandler.class</exclude>
+            <exclude>**/*Enum.class</exclude>
+            <exclude>**/*Entity.class</exclude>
+            <exclude>**/*Repository.class</exclude>
+            <exclude>**/*Util.class</exclude>
+            <exclude>**/*Api.class</exclude>
+            <exclude>**/*Constant.class</exclude>
+            <exclude>**/*DO.class</exclude>
+            <exclude>**/*DTO.class</exclude>
+            <exclude>**/Enum*.class</exclude>
+            <exclude>**/*StartupCheck.class</exclude>
+          </excludes>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+
+</project>

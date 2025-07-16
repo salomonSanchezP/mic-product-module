@@ -1,0 +1,28 @@
+openapi: '3.0.0'
+info:
+  version: '1.0.0'
+  title: Product API
+  description: Rest Api manage products
+
+servers:
+  - url: 'http://{baseEnv}/'
+    description: Local server
+    variables:
+      baseEnv:
+        default: localhost:9090
+      project:
+        default: product
+
+tags:
+  - name: Products
+
+paths:
+# ===============================================================================================
+# Config Products
+# ===============================================================================================
+
+  /product/v1/data/:
+    $ref: './product/product-api.yml#/noParameter'
+
+  /product/v1/data/{id}:
+    $ref: './product/product-api.yml#/withParameter'
